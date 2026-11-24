@@ -1,5 +1,5 @@
 From cd5900bd95803707a0b06c4a919a338b8b14c37b Mon Sep 17 00:00:00 2001
-From: k-doc <k-doc@localhost>
+From: hwpad <hwpad@localhost>
 Date: Tue, 3 Nov 2026 16:27:05 +0900
 Subject: [PATCH] =?UTF-8?q?fix(hancom):=20=EB=AC=B8=EC=9E=90=EC=97=B4?=
  =?UTF-8?q?=EC=9D=84=20=ED=91=9C=EB=A1=9C=EA=B0=80=20=EC=B2=AB=20=EB=AC=B8?=
@@ -59,7 +59,7 @@ index 1fc1b3527..3193fc88f 100644
    'src/ui/numbering-dialog.ts': 1,
    'src/ui/page-border-dialog.ts': 1,
 -  'src/ui/page-setup-dialog.ts': 1,
-+  'src/ui/page-setup-dialog.ts': 2, // +1 K-Doc: 「문서 전체」는 구역마다 setPageDef (같은 applyThroughRouter 안)
++  'src/ui/page-setup-dialog.ts': 2, // +1 Hwpad: 「문서 전체」는 구역마다 setPageDef (같은 applyThroughRouter 안)
    'src/ui/picture-props-dialog.ts': 5,
    'src/ui/section-settings-dialog.ts': 2,
    'src/ui/style-dialog.ts': 2, // +1: [#3387] 삭제를 snapshot 으로 라우팅하며 services 미주입 fallback 분기 추가(원장은 표면 수만 세므로 라우팅해도 줄지 않는다)

@@ -1,5 +1,5 @@
 From 2281d36fad43832eee37a1b8c2ed49a6d8f759c0 Mon Sep 17 00:00:00 2001
-From: k-doc <k-doc@localhost>
+From: hwpad <hwpad@localhost>
 Date: Tue, 3 Nov 2026 16:00:08 +0900
 Subject: [PATCH] =?UTF-8?q?feat(hancom):=20=EC=AA=BD=20=EB=B2=88=ED=98=B8?=
  =?UTF-8?q?=20=EB=A7=A4=EA=B8=B0=EA=B8=B0,=20=EA=B0=81=EC=A3=BC=20?=
@@ -257,7 +257,7 @@ index df476d8dd..1fc1b3527 100644
    'src/ui/chart-data-dialog.ts': 3, // [#4694] dryRun 선검증 1 + snapshot 라우팅 실쓰기 1 + services 미주입 폴백 1
    'src/ui/column-settings-dialog.ts': 1,
 -  'src/ui/endnote-shape-dialog.ts': 1,
-+  'src/ui/endnote-shape-dialog.ts': 2, // +1 K-Doc: 각주 탭은 applyFootnoteShape (같은 applyThroughRouter 안, 미주와 배타)
++  'src/ui/endnote-shape-dialog.ts': 2, // +1 Hwpad: 각주 탭은 applyFootnoteShape (같은 applyThroughRouter 안, 미주와 배타)
    'src/ui/equation-editor-dialog.ts': 2,
    'src/ui/equation-props-dialog.ts': 2,
    'src/ui/find-dialog.ts': 4,

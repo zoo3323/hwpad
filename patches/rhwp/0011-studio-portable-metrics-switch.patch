@@ -13,7 +13,7 @@ Content-Transfer-Encoding: 8bit
 화면(canvas2d)은 엔진이 모르는 글꼴의 글자 폭을 measureText 로 보충해 배치한다.
 SVG/PDF 내보내기와 native CLI 는 보충 없이 portable 치수로 배치하므로, 그런 글꼴이 든 문서는
 줄바꿈·쪽 나눔이 화면과 달라질 수 있다. 에이전트(CLI/MCP)가 보는 배치와 사람이 보는 화면을
-같게 하려는 호스트(K-Doc)가 supplementalCanvasMetricsEnabled 를 끈다.
+같게 하려는 호스트(Hwpad)가 supplementalCanvasMetricsEnabled 를 끈다.
 ---
  rhwp-studio/src/core/wasm-bridge.ts | 7 +++++++
  1 file changed, 7 insertions(+)

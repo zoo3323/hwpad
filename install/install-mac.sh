@@ -29,15 +29,6 @@ if pgrep -x hop-desktop >/dev/null 2>&1; then
   sleep 2
 fi
 
-# 예전 이름(K-Doc)으로 깔린 앱은 지우고, 최근 문서 목록은 새 이름 쪽으로 옮긴다.
-osascript -e 'tell application id "io.github.zoo3323.k-doc" to quit' >/dev/null 2>&1 || true
-rm -rf "/Applications/K-Doc.app" "$HOME/Applications/K-Doc.app" 2>/dev/null || true
-OLD_DATA="$HOME/Library/Application Support/io.github.zoo3323.k-doc"
-NEW_DATA="$HOME/Library/Application Support/io.github.zoo3323.hwpad"
-if [ -d "$OLD_DATA" ] && [ ! -e "$NEW_DATA" ]; then
-  mv "$OLD_DATA" "$NEW_DATA" 2>/dev/null || true
-fi
-
 DEST="/Applications"
 if ! { [ -w "$DEST" ] && { [ ! -e "$DEST/Hwpad.app" ] || [ -w "$DEST/Hwpad.app" ]; }; }; then
   DEST="$HOME/Applications"

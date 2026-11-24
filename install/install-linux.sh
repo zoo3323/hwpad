@@ -6,12 +6,6 @@ BASE="https://github.com/$REPO/releases/latest/download"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-# 예전 이름(K-Doc)으로 깔린 것은 지운다.
-if command -v dpkg >/dev/null 2>&1 && dpkg -s k-doc >/dev/null 2>&1; then
-  sudo apt-get remove -y k-doc || true
-fi
-rm -f "$HOME/Applications/k-doc.AppImage" "$HOME/.local/share/applications/k-doc.desktop" "$HOME/.local/share/icons/k-doc.png"
-
 if command -v apt-get >/dev/null 2>&1 && command -v dpkg >/dev/null 2>&1; then
   echo "Hwpad(.deb) 내려받는 중..."
   curl -fL --progress-bar -o "$TMP/hwpad.deb" "$BASE/hwpad-linux-x64.deb"
