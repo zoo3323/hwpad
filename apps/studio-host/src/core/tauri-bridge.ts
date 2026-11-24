@@ -459,7 +459,7 @@ export class TauriBridge extends WasmBridge implements DesktopBridgeApi {
     const cancelLabel = '저장 취소';
     const result = await message(
       [
-        '원본 파일이 K-Doc 밖에서 변경되었습니다.',
+        '원본 파일이 Hwpad 밖에서 변경되었습니다.',
         status.sourcePath ? `파일: ${status.sourcePath}` : '',
         status.reason ?? '',
         '',
@@ -634,7 +634,7 @@ export class TauriBridge extends WasmBridge implements DesktopBridgeApi {
   }
 
   private updateDocumentTitle(): void {
-    const name = this.docId ? this.fileName || '문서' : 'K-Doc';
-    document.title = `${this.dirty ? '• ' : ''}${name} - K-Doc`;
+    const name = this.docId ? this.fileName || '문서' : 'Hwpad';
+    document.title = `${this.dirty ? '• ' : ''}${name} - Hwpad`;
   }
 }

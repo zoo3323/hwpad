@@ -3,7 +3,8 @@
   <path d="M620 220 V300 Q620 324 644 324 H724 Z" fill="#c9d6e6"/>
   <g stroke="#1e3a8a" stroke-linecap="round" fill="none">
     <path d="M392 318 V606" stroke-width="58"/>
-    <path d="M598 318 L428 466 L604 606" stroke-width="56" stroke-linejoin="round"/>
+    <path d="M600 318 V606" stroke-width="58"/>
+    <path d="M392 462 H600" stroke-width="54"/>
   </g>
   <g fill="#c9d6e6">
     <rect x="352" y="680" width="260" height="24" rx="12"/>

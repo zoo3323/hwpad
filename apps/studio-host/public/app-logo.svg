@@ -13,7 +13,7 @@
     </filter>
   </defs>
 
-  <!-- K-Doc 앱 아이콘. macOS 격자: 1024 캔버스, 824 둥근 사각형 -->
+  <!-- Hwpad 앱 아이콘. macOS 격자: 1024 캔버스, 824 둥근 사각형 -->
   <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#bg)"/>
 
   <!-- 문서 한 장 (오른쪽 위 접힌 모서리) -->
@@ -22,10 +22,11 @@
     <path d="M620 220 V300 Q620 324 644 324 H724 Z" fill="#C9D6E6"/>
   </g>
 
-  <!-- 'K' -->
+  <!-- 'H' -->
   <g stroke="#1E3A8A" stroke-linecap="round" fill="none">
     <path d="M392 318 V606" stroke-width="58"/>
-    <path d="M598 318 L428 466 L604 606" stroke-width="56" stroke-linejoin="round"/>
+    <path d="M600 318 V606" stroke-width="58"/>
+    <path d="M392 462 H600" stroke-width="54"/>
   </g>
   <!-- 문서 줄 -->
   <g fill="#C9D6E6">

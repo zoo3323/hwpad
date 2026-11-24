@@ -7,10 +7,10 @@ import test from 'node:test';
 const repoRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 
 // macOS 는 .hwp/.hwpx 확장자를 설치된 앱들이 선언한 형식 이름(UTI) 중 하나로 정한다.
-// 그 이름이 K-Doc 목록에 없으면 「다음으로 열기」·기본 앱 목록과 Quick Look 에서 K-Doc 이 빠진다.
+// 그 이름이 Hwpad 목록에 없으면 「다음으로 열기」·기본 앱 목록과 Quick Look 에서 Hwpad 가 빠진다.
 // 예: LibreOffice 가 깔린 맥에서 .hwp 는 org.libreoffice.hwp-document 로 잡힌다.
 const HWP_TYPES = [
-  'io.github.zoo3323.k-doc.hwp',
+  'io.github.zoo3323.hwpad.hwp',
   'com.hancom.hwp',
   'com.haansoft.hancomofficeviewer.mac.hwp',
   'org.libreoffice.hwp-document',
@@ -18,7 +18,7 @@ const HWP_TYPES = [
   'net.golbin.hop.hwp',
 ];
 const HWPX_TYPES = [
-  'io.github.zoo3323.k-doc.hwpx',
+  'io.github.zoo3323.hwpad.hwpx',
   'com.hancom.hwpx',
   'com.haansoft.hancomofficeviewer.mac.hwpx',
   'com.postmelee.alhangeul.hwpx',

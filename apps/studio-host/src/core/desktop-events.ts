@@ -216,7 +216,7 @@ async function openLatestDesktopDocument({
   }
 }
 
-// 에이전트 등이 열린 파일을 바꾸면 화면에 반영한다(localStorage kdoc.autoReload=off 로 끈다).
+// 에이전트 등이 열린 파일을 바꾸면 화면에 반영한다(localStorage hwpad.autoReload=off 로 끈다).
 function startExternalChangeWatcher(bridge: DesktopRuntimeBridge, eventBus: EventBus): void {
   const { pollExternalChange, reloadFromDisk, hasUnsavedChanges } = bridge;
   if (!pollExternalChange || !reloadFromDisk || !hasUnsavedChanges) return;

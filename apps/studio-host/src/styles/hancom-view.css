@@ -2,14 +2,14 @@
 :root[data-toolbox-basic="hidden"] #icon-toolbar { display: none; }
 :root[data-toolbox-format="hidden"] #style-bar { display: none; }
 
-:root.kdoc-no-ruler #editor-area {
+:root.hwpad-no-ruler #editor-area {
   grid-template-columns: 0 minmax(0, 1fr) auto;
   grid-template-rows: 0 minmax(0, 1fr);
 }
-:root.kdoc-no-ruler #ruler-corner,
-:root.kdoc-no-ruler #h-ruler,
-:root.kdoc-no-ruler #v-ruler { display: none; }
+:root.hwpad-no-ruler #ruler-corner,
+:root.hwpad-no-ruler #h-ruler,
+:root.hwpad-no-ruler #v-ruler { display: none; }
 
-:root.kdoc-no-status #status-bar { display: none; }
+:root.hwpad-no-status #status-bar { display: none; }
 
-:root.kdoc-grayscale #scroll-content { filter: grayscale(1); }
+:root.hwpad-grayscale #scroll-content { filter: grayscale(1); }

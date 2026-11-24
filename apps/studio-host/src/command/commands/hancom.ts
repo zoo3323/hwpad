@@ -4,7 +4,7 @@ import { showToast } from '@upstream/ui/toast';
 import { InsertTextCommand } from '@upstream/engine/command';
 
 /**
- * 한글 메뉴에 있는데 K-Doc 에 없던 기능(docs/operations/hancom-feature-inventory.md).
+ * 한글 메뉴에 있는데 Hwpad 에 없던 기능(docs/operations/hancom-feature-inventory.md).
  * 엔진이 이미 지원하는 것을 사람이 메뉴로 쓸 수 있게 잇는다.
  */
 
@@ -325,7 +325,7 @@ class ConvertNotesDialog extends ModalDialog {
       row.style.gap = '6px';
       const input = document.createElement('input');
       input.type = 'radio';
-      input.name = 'kdoc-convert-notes';
+      input.name = 'hwpad-convert-notes';
       input.checked = checked;
       row.append(input, document.createTextNode(label));
       body.appendChild(row);
@@ -524,7 +524,7 @@ class PasteSpecialDialog extends ModalDialog {
       row.style.gap = '6px';
       const input = document.createElement('input');
       input.type = 'radio';
-      input.name = 'kdoc-paste-special';
+      input.name = 'hwpad-paste-special';
       input.checked = checked;
       row.append(input, document.createTextNode(label));
       body.appendChild(row);
@@ -779,17 +779,17 @@ export const hancomCommands: CommandDef[] = [
   {
     id: 'view:toggle-ruler',
     label: '눈금자',
-    execute() { toggleRootClass('kdoc-no-ruler'); },
+    execute() { toggleRootClass('hwpad-no-ruler'); },
   },
   {
     id: 'view:toggle-status-bar',
     label: '상황 선',
-    execute() { toggleRootClass('kdoc-no-status'); },
+    execute() { toggleRootClass('hwpad-no-status'); },
   },
   {
     id: 'view:grayscale',
     label: '회색조',
-    execute() { document.documentElement.classList.toggle('kdoc-grayscale'); },
+    execute() { document.documentElement.classList.toggle('hwpad-grayscale'); },
   },
   {
     id: 'view:fullscreen',

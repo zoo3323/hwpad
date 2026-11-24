@@ -58,8 +58,8 @@ jobs:
       - name: 의존성 설치
         run: pnpm install --frozen-lockfile
 
-      # test:upstream 의 HOP 시절 검사 7개는 K-Doc 워크플로와 맞지 않아 원래부터 실패한다(정리 대기).
-      # K-Doc 이 관리하는 저장소 검사만 돌린다.
+      # test:upstream 의 HOP 시절 검사 7개는 Hwpad 워크플로와 맞지 않아 원래부터 실패한다(정리 대기).
+      # Hwpad 가 관리하는 저장소 검사만 돌린다.
       - name: 저장소 검사
         run: node --test tests/hop-version.test.mjs tests/file-associations.test.mjs tests/agent-cli-bundle.test.mjs
 
@@ -69,14 +69,14 @@ jobs:
       - name: build:studio
         run: pnpm run build:studio
 
-      # tauri.conf.json 의 externalBin(k-doc-agent)은 빌드 때 파일이 있어야 한다. 검사에서는 빈 자리표시를 둔다
+      # tauri.conf.json 의 externalBin(hwpad-agent)은 빌드 때 파일이 있어야 한다. 검사에서는 빈 자리표시를 둔다
       # (실제 도구는 아래 parity 작업과 release 에서 빌드한다).
       - name: 에이전트 도구 자리표시
         run: |
           host="$(rustc -vV | sed -n 's/^host: //p')"
           mkdir -p apps/desktop/src-tauri/binaries
-          printf '#!/bin/sh\nexit 0\n' > "apps/desktop/src-tauri/binaries/k-doc-agent-$host"
-          chmod +x "apps/desktop/src-tauri/binaries/k-doc-agent-$host"
+          printf '#!/bin/sh\nexit 0\n' > "apps/desktop/src-tauri/binaries/hwpad-agent-$host"
+          chmod +x "apps/desktop/src-tauri/binaries/hwpad-agent-$host"
 
       - name: test:desktop
         run: pnpm run test:desktop
@@ -112,11 +112,11 @@ jobs:
       - name: 에이전트 도구 빌드
         run: scripts/build-agent-cli.sh x86_64-unknown-linux-gnu
 
-      # 에이전트가 MCP 로 그린 쪽과 K-Doc 화면 엔진(저장소 WASM)이 그린 쪽이 바이트까지 같은지 본다.
+      # 에이전트가 MCP 로 그린 쪽과 Hwpad 화면 엔진(저장소 WASM)이 그린 쪽이 바이트까지 같은지 본다.
       - name: 화면 일치 검사
         run: |
           node scripts/agent-parity.mjs \
-            --agent apps/desktop/src-tauri/binaries/k-doc-agent-x86_64-unknown-linux-gnu \
+            --agent apps/desktop/src-tauri/binaries/hwpad-agent-x86_64-unknown-linux-gnu \
             third_party/rhwp/samples/two_column_exam_floats/*.hwpx \
             "third_party/rhwp/samples/2010-01-06.hwp" \
             "third_party/rhwp/samples/2022년 국립국어원 업무계획.hwp"
@@ -145,7 +145,7 @@ jobs:
           workspaces: third_party/rhwp -> target
           key: engine
 
-      # K-Doc 패치가 다루는 영역의 단위 테스트(이름 필터).
+      # Hwpad 패치가 다루는 영역의 단위 테스트(이름 필터).
       - name: 엔진 단위 테스트
         working-directory: third_party/rhwp
         run: cargo test --locked -p rhwp --lib -- equation picture_in_cell equalize page_number_field paragraph_band page_number_pos footnote_shape char_overlap_insert convert_notes text_table_conversion column_ratio

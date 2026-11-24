@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # third_party/rhwp 에 upstream rhwp 기준 커밋을 받고 patches/rhwp/*.patch 를 적용한다.
 # rhwp 저장소는 문서·PDF 자료 때문에 수 GB 라 blob 은 필요할 때만 받고 무거운 폴더는 뺀다.
-# CLI(k-doc-agent)가 실행 파일에 넣는 안내 문서(mydocs/manual, mydocs/tech/agent_roadmap)는 받는다.
+# CLI(hwpad-agent)가 실행 파일에 넣는 안내 문서(mydocs/manual, mydocs/tech/agent_roadmap)는 받는다.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -23,7 +23,7 @@ fi
 if ! git -C "$RHWP" log -12 --format=%s | grep -qF "$MARKER"; then
   echo "[rhwp] 패치 적용"
   git -C "$RHWP" checkout -q "$BASE"
-  git -C "$RHWP" -c user.name="k-doc" -c user.email="k-doc@localhost" \
+  git -C "$RHWP" -c user.name="hwpad" -c user.email="hwpad@localhost" \
     -c core.autocrlf=false am --3way "$ROOT"/patches/rhwp/*.patch
 fi
 echo "[rhwp] $(git -C "$RHWP" log -1 --format='%h %s')"

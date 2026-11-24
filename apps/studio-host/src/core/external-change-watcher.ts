@@ -1,4 +1,4 @@
-// 에이전트 등 다른 프로그램이 열린 문서 파일을 바꾸면 K-Doc 화면에 반영한다.
+// 에이전트 등 다른 프로그램이 열린 문서 파일을 바꾸면 Hwpad 화면에 반영한다.
 // - 고친 내용이 없으면 조용히 다시 불러온다.
 // - 고친 내용이 있으면 덮어쓰지 않고 알린다.
 // 쓰는 도중의 파일을 읽지 않도록 같은 표시(token)가 두 번 연달아 나올 때만 움직인다.
@@ -22,7 +22,7 @@ export interface ExternalChangeView {
   hide(): void;
 }
 
-export const AUTO_RELOAD_STORAGE_KEY = 'kdoc.autoReload';
+export const AUTO_RELOAD_STORAGE_KEY = 'hwpad.autoReload';
 const POLL_INTERVAL_MS = 1000;
 
 export class ExternalChangeWatcher {

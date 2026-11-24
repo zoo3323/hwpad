@@ -10,7 +10,7 @@ import {
 
 const repoRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 
-test('HOP base version stays aligned across package, native, and Quick Look metadata; K-Doc app version is semver', async () => {
+test('HOP base version stays aligned across package, native, and Quick Look metadata; Hwpad app version is semver', async () => {
   const rootPackage = await readJson('package.json');
   const desktopPackage = await readJson('apps/desktop/package.json');
   const tauriConfig = await readJson('apps/desktop/src-tauri/tauri.conf.json');
@@ -22,7 +22,7 @@ test('HOP base version stays aligned across package, native, and Quick Look meta
 
   assert.match(expectedVersion, /^\d+\.\d+\.\d+$/);
   assert.equal(desktopPackage.version, expectedVersion);
-  // K-Doc 은 앱 버전(0.2.x)을 tauri.conf.json 에서만 따로 올린다(릴리스 태그 v*). 나머지는 HOP 기준 버전에 둔다.
+  // Hwpad 는 앱 버전(0.2.x)을 tauri.conf.json 에서만 따로 올린다(릴리스 태그 v*). 나머지는 HOP 기준 버전에 둔다.
   assert.match(tauriConfig.version, /^\d+\.\d+\.\d+$/);
   assert.equal(parsePackageVersion(cargoToml), expectedVersion);
   assert.equal(cargoLockPackageVersion(cargoLock, 'hop-desktop'), expectedVersion);

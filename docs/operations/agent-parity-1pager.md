@@ -2,11 +2,11 @@
 
 ## Background
 
-2026-11-02 사용자 결정: K-Doc 은 에이전트(Claude Code 등)가 쓰기 쉬워야 하고, 에이전트가 보고 고친 결과가
-사람이 K-Doc 에서 보는 것과 똑같이 나와야 한다. 사람 편집은 한글 기본 기능을 모두 갖춘다(2단계).
+2026-11-02 사용자 결정: Hwpad 는 에이전트(Claude Code 등)가 쓰기 쉬워야 하고, 에이전트가 보고 고친 결과가
+사람이 Hwpad 에서 보는 것과 똑같이 나와야 한다. 사람 편집은 한글 기본 기능을 모두 갖춘다(2단계).
 공동 편집은 파일 경유부터 시작한다(실시간은 3단계).
 
-지금 에이전트는 따로 깐 upstream `rhwp` CLI(v0.8.7, `rhwp mcp-serve`)를 쓴다. K-Doc 엔진은
+지금 에이전트는 따로 깐 upstream `rhwp` CLI(v0.8.7, `rhwp mcp-serve`)를 쓴다. Hwpad 엔진은
 upstream `ad4bf269`(0.9.0) + `patches/rhwp` 10개다.
 
 ## Problem
@@ -17,14 +17,14 @@ upstream `ad4bf269`(0.9.0) + `patches/rhwp` 10개다.
    같은 문서라도 글자 폭이 달라질 수 있다.
 3. **화면은 브라우저 측정 폭을 덧댄다.** canvas2d 의 `CanvasMetricSession` 이 `measureText` 폭을 보충 메트릭으로 쓴다.
    SVG/PDF 내보내기는 `withPortableMetrics` 로 이를 끈다. 화면과 내보내기가 1px 단위로 다를 수 있다.
-4. **K-Doc 은 파일이 밖에서 바뀌어도 모른다.** 외부 변경 확인(`check_external_modification`)은 저장할 때만 돈다.
+4. **Hwpad 는 파일이 밖에서 바뀌어도 모른다.** 외부 변경 확인(`check_external_modification`)은 저장할 때만 돈다.
    에이전트가 파일을 고쳐도 사람 화면은 옛 내용 그대로다.
 
 ## Goal
 
-- 에이전트 도구와 K-Doc 화면이 **같은 엔진 커밋·같은 패치·같은 글꼴 규칙**을 쓴다.
-- 에이전트가 파일을 고치면 K-Doc 이 알아서 다시 불러온다. 사람이 고치던 중이면 덮어쓰지 않고 알린다.
-- "에이전트가 렌더한 쪽 = K-Doc 이 그린 쪽"을 CI 테스트가 지킨다.
+- 에이전트 도구와 Hwpad 화면이 **같은 엔진 커밋·같은 패치·같은 글꼴 규칙**을 쓴다.
+- 에이전트가 파일을 고치면 Hwpad 가 알아서 다시 불러온다. 사람이 고치던 중이면 덮어쓰지 않고 알린다.
+- "에이전트가 렌더한 쪽 = Hwpad 가 그린 쪽"을 CI 테스트가 지킨다.
 
 ## Non-goals
 
@@ -46,10 +46,10 @@ upstream `ad4bf269`(0.9.0) + `patches/rhwp` 10개다.
    - 고친 내용이 없으면 같은 쪽 위치로 조용히 다시 불러온다.
    - 고친 내용이 있으면 띠 알림: 「다른 프로그램이 이 파일을 바꿨어요 [다시 불러오기] [내 것 유지]」.
    - 기존 `FileFingerprint`·`external_modification_status` 를 재사용한다.
-3. **동봉 에이전트 도구 `k-doc-agent`**: release 워크플로에서 `prepare-rhwp.sh`(패치 적용) 뒤 같은 트리로 `rhwp` 바이너리를 빌드해
-   앱 번들(`Resources/bin/k-doc-agent`)에 넣는다. PROVENANCE 의 kdocCommit 과 같은지 빌드 때 검사한다.
-   `k-doc-agent mcp-serve` 를 MCP 로 등록하는 안내를 README 에 둔다.
-4. **글꼴 규칙 고정**: 동봉 도구의 기본 FontEnvironment 를 K-Doc 해석 순서(`docs/architecture/LOCAL_FONTS.md`,
+3. **동봉 에이전트 도구 `hwpad-agent`**: release 워크플로에서 `prepare-rhwp.sh`(패치 적용) 뒤 같은 트리로 `rhwp` 바이너리를 빌드해
+   앱 번들(`Resources/bin/hwpad-agent`)에 넣는다. PROVENANCE 의 hwpadCommit 과 같은지 빌드 때 검사한다.
+   `hwpad-agent mcp-serve` 를 MCP 로 등록하는 안내를 README 에 둔다.
+4. **글꼴 규칙 고정**: 동봉 도구의 기본 FontEnvironment 를 Hwpad 해석 순서(`docs/architecture/LOCAL_FONTS.md`,
    `font_catalog.rs`)와 같게 한다. 자동 대체 선택을 끈다.
 5. **일치 테스트**: 표본 문서(2단 시험지 3종 포함)의 쪽을 (a) 동봉 도구 SVG, (b) studio WASM portable 렌더로 뽑아 바이트 비교.
    화면 보충 메트릭 차이는 별도 측정값으로 기록하고, 필요하면 「portable 보기」 설정을 더한다.
